@@ -1,0 +1,1 @@
+A smart contract that facilitates local energy trading for my master thesis
