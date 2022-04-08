@@ -66,14 +66,14 @@ contract EnergyStorage {
   }
   function withDrawMarket() onlyOwner public{
     address payable addr = payable(msg.sender);
-    require(marketPay>0,"Energy surplus: please fund contract");
-    require(uint(marketPay)<address(this).balance,"Not enough funds in contract");
+    require(marketPay>0,"Energy surplus");
+    require(uint(marketPay)<address(this).balance,"Not enough funds");
     addr.transfer(uint(marketPay));
     emit amountWithdrawn(uint(marketPay));
   }
   function withdraw() public{
     require(addressToAccount[msg.sender].funds>0);
-    require(address(this).balance>uint(addressToAccount[msg.sender].funds),"Not Enough funds in contract");
+    require(address(this).balance>uint(addressToAccount[msg.sender].funds),"Not Enough funds");
 
     address payable addr = payable(msg.sender);
     addr.transfer(uint(addressToAccount[msg.sender].funds));
